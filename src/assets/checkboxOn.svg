@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
   <g filter="url(#filter0_d_9_2)">
-    <rect x="5.5" y="5.5" width="31" height="31" rx="4.5" fill="white" stroke="$text-color"/>
-    <path d="M13 21L18 26L28.5 15.5" stroke="$text-color" stroke-width="2"/>
+    <rect x="5.5" y="5.5" width="31" height="31" rx="4.5" fill="white" stroke="#020056"/>
+    <path d="M13 21L18 26L28.5 15.5" stroke="#020056" stroke-width="2"/>
   </g>
   <defs>
     <filter id="filter0_d_9_2" x="-1" y="-3" width="46" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

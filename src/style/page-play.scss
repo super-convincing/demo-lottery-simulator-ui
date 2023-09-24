@@ -1,3 +1,14 @@
+.content-container {
+  width: 100%;
+  max-width: 792px;
+  min-height: 400px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: #FFF;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.10);
+  padding: 48px 78px;
+}
+
 .play-content {
   @include flexCol();
   gap: 24px;
@@ -20,40 +31,31 @@
     position: relative;
     float: left;
 
-    table {
+    .text,
+    .number,
+    input {
+      color: #FFF;
+      font-size: 14px;
+      line-height: normal;
+      line-height: 26px;
+      font-weight: 700;
+      padding: 0px 4px;
+      text-align: left;
+    }
 
-      th,
-      td,
-      td input {
-        color: #FFF;
-        font-size: 14px;
-        line-height: normal;
-        min-width: 165px;
-        line-height: 26px;
-        font-weight: 700;
-        padding: 0px 4px;
-        text-align: left;
-      }
+    .number input {
+      float: left;
+      min-width: 0px;
+    }
 
-      td input {
-        float: left;
-        min-width: 0px;
-        width: fit-content;
-      }
 
-      tr.big {
+    .text.big,
+    .number.big input {
+      font-size: 16px;
+    }
 
-        th,
-        td,
-        td input {
-          font-size: 16px;
-        }
-
-        td,
-        td input {
-          font-weight: 800;
-        }
-      }
+    .number.big input {
+      font-weight: 800;
     }
   }
 
@@ -70,6 +72,7 @@
     gap: 56px;
 
     .checkbox {
+      color: $primary-color;
       cursor: pointer;
     }
 
@@ -78,8 +81,15 @@
     }
   }
 
+  .sec-speed {
+    .text {
+      @include baseText();
+    }
+  }
+
   .sec-flow-controls {
     @include flexCol();
+    margin-top: 20px;
 
     .buttons {
       @include flexRow();
@@ -88,20 +98,5 @@
       border-radius: 20px;
       border: dashed 1px $primary-color;
     }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .play-content {
-    // .sec-summary {
-    //   table {
-
-    //     th,
-    //     td,
-    //     td input {
-    //       font-size: 12px;
-    //     }
-    //   }
-    // }
   }
 }
