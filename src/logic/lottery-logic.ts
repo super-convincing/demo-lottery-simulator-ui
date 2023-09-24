@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 export interface LotterySimulatorState {
   isRunning: boolean;
   isJackpot: boolean;
+  isRandom: boolean;
   round: number;
   roundMatched: number;
   userNumbers: number[];
@@ -14,14 +15,14 @@ export interface LotterySimulatorState {
   won5: number;
 }
 
-
 export class LotterySimulator {
   // state variables
   private isRunning: boolean = false;
   private isJackpot: boolean = false;
+  private isRandom: boolean = false;
   private round: number = 0;
   private roundMatched: number = 0;
-  private userNumbers: number[] = [];
+  private userNumbers: number[] = get5RandomNumber();
   private roundNumbers: number[] = [];
   private timeout: number = 100;
   private won2: number = 0;
@@ -37,10 +38,11 @@ export class LotterySimulator {
     this.cb = cb;
   }
 
-  getState(): LotterySimulatorState {
+  private getState(): LotterySimulatorState {
     return {
       isRunning: this.isRunning,
       isJackpot: this.isJackpot,
+      isRandom: this.isRandom,
       round: this.round,
       roundMatched: this.roundMatched,
       userNumbers: this.userNumbers,
@@ -71,15 +73,20 @@ export class LotterySimulator {
   reset() {
     this.isRunning = false;
     this.isJackpot = false;
+    this.isRandom = false;
     this.timeout = 100;
     this.round = 0;
     this.roundMatched = 0;
-    this.userNumbers = [];
+    this.userNumbers = get5RandomNumber();
     this.roundNumbers = [];
     this.won2 = 0;
     this.won3 = 0;
     this.won4 = 0;
     this.won5 = 0;
+  }
+
+  setCallback(cb: (state: LotterySimulatorState) => void) {
+    this.cb = cb;
   }
 
   setTimeoutMS(timeout: number) {
@@ -90,16 +97,17 @@ export class LotterySimulator {
     }
   }
 
-  setUserNumbers(numbers: number[] = this.generate5RandomNumber()) {
+  setPlayWithRandom(isRandom: boolean) {
+    this.isRandom = isRandom;
+  }
+
+  setUserNumbers(numbers: number[] = get5RandomNumber()) {
+    this.isRandom = false;
     this.userNumbers = numbers;
   }
 
-  private generate5RandomNumber() {
-    return getRandomNumbers(5, 1, 90)
-  }
-
   private serRoundNumbers() {
-    this.roundNumbers = this.generate5RandomNumber();
+    this.roundNumbers = get5RandomNumber();
   }
 
   private checkMatchingNumbers(): number {
@@ -130,6 +138,9 @@ export class LotterySimulator {
     if (this.isRunning) {
       this.round++;
       this.serRoundNumbers();
+      if (this.isRandom) {
+        this.userNumbers = get5RandomNumber();
+      }
       this.roundMatched = this.checkMatchingNumbers();
       if (this.roundMatched === 5) {
         this.isJackpot = true;
@@ -140,6 +151,9 @@ export class LotterySimulator {
   }
 }
 
+function get5RandomNumber() {
+  return getRandomNumbers(5, 1, 90)
+}
 
 function getRandomNumber(min: number, max: number): number {
   const range = max - min + 1;
@@ -170,29 +184,29 @@ function getRandomNumbers(count: number, min: number, max: number): number[] {
   return numbers.sort((a, b) => a - b);
 }
 
-export function testSimulator() {
-  console.clear();
-  const cb = (state: LotterySimulatorState) => {
-    let text = `-- round: ${state.round}`;
-    text += ` --- number: ${state.roundNumbers.join(', ')}`;
-    if (state.roundMatched > 1) text += ` --- matching: ${state.roundMatched}`;
-    console.log(text);
-  }
+// export function testSimulator() {
+//   console.clear();
+//   const cb = (state: LotterySimulatorState) => {
+//     let text = `-- round: ${state.round}`;
+//     text += ` --- number: ${state.roundNumbers.join(', ')}`;
+//     if (state.roundMatched > 1) text += ` --- matching: ${state.roundMatched}`;
+//     console.log(text);
+//   }
 
-  const lotterySimulator = new LotterySimulator(cb);
-  // lotterySimulator.setUserNumbers([5, 10, 15, 20, 25]);
-  lotterySimulator.setUserNumbers();
-  lotterySimulator.start(100);
-  setTimeout(() => {
-    lotterySimulator.stop();
-    const state = lotterySimulator.getState();
-    console.log(`Simulated rounds: ${state.round}`);
-    console.log(`Matched 2 numbers: ${state.won2} times`);
-    console.log(`Matched 3 numbers: ${state.won3} times`);
-    console.log(`Matched 4 numbers: ${state.won4} times`);
-    console.log(`Matched 5 numbers: ${state.won5} times`);
-    lotterySimulator.reset();
-  }, 10000); // Simulate for 10 seconds
-}
+//   const lotterySimulator = new LotterySimulator(cb);
+//   // lotterySimulator.setUserNumbers([5, 10, 15, 20, 25]);
+//   lotterySimulator.setUserNumbers();
+//   lotterySimulator.start(100);
+//   setTimeout(() => {
+//     lotterySimulator.stop();
+//     const state = lotterySimulator.getState();
+//     console.log(`Simulated rounds: ${state.round}`);
+//     console.log(`Matched 2 numbers: ${state.won2} times`);
+//     console.log(`Matched 3 numbers: ${state.won3} times`);
+//     console.log(`Matched 4 numbers: ${state.won4} times`);
+//     console.log(`Matched 5 numbers: ${state.won5} times`);
+//     lotterySimulator.reset();
+//   }, 10000); // Simulate for 10 seconds
+// }
 
 // testSimulator()

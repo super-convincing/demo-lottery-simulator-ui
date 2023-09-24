@@ -1,0 +1,1 @@
+export { deferDecorator } from './deferDecorator';
