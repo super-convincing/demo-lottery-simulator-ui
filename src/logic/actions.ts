@@ -1,4 +1,5 @@
-import { getSimulatoreInstance } from "./lottery-instance"
+import { getSimulatoreInstance } from "./instance"
+import { updateStore } from "./store"
 
 export const actStart = () => {
   getSimulatoreInstance().start()
@@ -24,3 +25,6 @@ export const actSetTimeoutMS = (timeout: number) => {
   getSimulatoreInstance().setTimeoutMS(timeout)
 }
 
+export const actUpdateStore = () => {
+  updateStore(getSimulatoreInstance().getState())
+}

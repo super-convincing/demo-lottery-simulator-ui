@@ -38,7 +38,7 @@ export class LotterySimulator {
     this.cb = cb;
   }
 
-  private getState(): LotterySimulatorState {
+  getState(): LotterySimulatorState {
     return {
       isRunning: this.isRunning,
       isJackpot: this.isJackpot,
@@ -68,6 +68,7 @@ export class LotterySimulator {
     if (this.interval) {
       clearInterval(this.interval);
     }
+    this.executeCallback();
   }
 
   reset() {
@@ -83,10 +84,15 @@ export class LotterySimulator {
     this.won3 = 0;
     this.won4 = 0;
     this.won5 = 0;
+    this.executeCallback();
   }
 
   setCallback(cb: (state: LotterySimulatorState) => void) {
     this.cb = cb;
+  }
+
+  private executeCallback() {
+    this.cb(this.getState());
   }
 
   setTimeoutMS(timeout: number) {
@@ -94,16 +100,24 @@ export class LotterySimulator {
     if (this.isRunning) {
       this.stop();
       this.start();
+    } else {
+      this.executeCallback();
     }
   }
 
   setPlayWithRandom(isRandom: boolean) {
     this.isRandom = isRandom;
+    if (!this.isRunning) {
+      this.executeCallback();
+    }
   }
 
   setUserNumbers(numbers: number[] = get5RandomNumber()) {
     this.isRandom = false;
     this.userNumbers = numbers;
+    if (!this.isRunning) {
+      this.executeCallback();
+    }
   }
 
   private serRoundNumbers() {
@@ -146,7 +160,7 @@ export class LotterySimulator {
         this.isJackpot = true;
         this.isRunning = false;
       }
-      this.cb(this.getState());
+      this.executeCallback();
     }
   }
 }

@@ -1,4 +1,4 @@
-import { LotterySimulator } from './lottery-logic';
+import { LotterySimulator } from '../utils';
 import { updateStore } from './store';
 
 let lotterySimulator: LotterySimulator;
