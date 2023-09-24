@@ -1,0 +1,107 @@
+.play-content {
+  @include flexCol();
+  gap: 24px;
+
+  .sec-title {
+    h2 {
+      color: $text-color;
+      font-size: 40px;
+      line-height: 55px;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: capitalize;
+    }
+  }
+
+  .sec-summary {
+    border-radius: 10px;
+    background: $primary-color;
+    padding: 18px 20px;
+    position: relative;
+    float: left;
+
+    table {
+
+      th,
+      td,
+      td input {
+        color: #FFF;
+        font-size: 14px;
+        line-height: normal;
+        min-width: 165px;
+        line-height: 26px;
+        font-weight: 700;
+        padding: 0px 4px;
+        text-align: left;
+      }
+
+      td input {
+        float: left;
+        min-width: 0px;
+        width: fit-content;
+      }
+
+      tr.big {
+
+        th,
+        td,
+        td input {
+          font-size: 16px;
+        }
+
+        td,
+        td input {
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  .sec-wons {
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.15);
+    border: 1px solid #F6F0C6;
+    background: #FFF;
+    border-radius: 10px;
+    max-width: 500px;
+  }
+
+  .sec-play-random {
+    @include flexRow();
+    gap: 56px;
+
+    .checkbox {
+      cursor: pointer;
+    }
+
+    .text {
+      @include baseText();
+    }
+  }
+
+  .sec-flow-controls {
+    @include flexCol();
+
+    .buttons {
+      @include flexRow();
+      gap: 56px;
+      padding: 10px 30px;
+      border-radius: 20px;
+      border: dashed 1px $primary-color;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .play-content {
+    // .sec-summary {
+    //   table {
+
+    //     th,
+    //     td,
+    //     td input {
+    //       font-size: 12px;
+    //     }
+    //   }
+    // }
+  }
+}
