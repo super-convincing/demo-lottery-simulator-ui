@@ -14,7 +14,7 @@ export const CSlider = ({
   return <div className='comp-slider'>
     <Slider
       id='slider'
-      defaultValue={speed}
+      value={speed}
       min={min}
       max={max}
       colorScheme='green'

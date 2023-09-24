@@ -1,7 +1,7 @@
 import { Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 
-export const CIcon = ({ text, Icon }: { text: string, Icon: any }) => {
+export const CIcon = ({ text, Icon, onClick }: { text: string, Icon: any, onClick?: VoidFunction }) => {
   const [showTooltip, setShowTooltip] = useState<boolean>(false)
   const onMouseEnter = () => setShowTooltip(true)
   const onMouseLeave = () => setShowTooltip(false)
@@ -15,7 +15,7 @@ export const CIcon = ({ text, Icon }: { text: string, Icon: any }) => {
       label={text}
     ><span></span>
     </Tooltip>
-    <Icon size={40} color={"#A5D9C8"} {...{ onMouseEnter, onMouseLeave }} className="icon" />
+    <Icon size={40} color={"#A5D9C8"} {...{ onMouseEnter, onMouseLeave }} className="icon" onClick={onClick} />
   </div>
 }
 

@@ -1,8 +1,11 @@
 import { CONFIG } from '../config'
 import { SimpleGrid } from '@chakra-ui/react';
 import { CNumber } from '../atoms';
+import { $round } from '../logic';
 
-export const SecSummary = ({ nrTickets }: { nrTickets: number }) => {
+export const SecSummary = () => {
+  const nrTickets = $round();
+
   return <div className='sec-summary'>
     <SimpleGrid columns={2}>
       <span className='text big'>Number of tickets:</span>
