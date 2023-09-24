@@ -1,6 +1,12 @@
 @import "variables.scss";
 @import "mixins.scss";
 @import "fonts.scss";
+
 @import "app.scss";
 @import "page-play.scss";
 @import "components.scss";
+
+
+@import "app.mobile.scss";
+@import "page-play.mobile.scss";
+@import "components.mobile.scss";

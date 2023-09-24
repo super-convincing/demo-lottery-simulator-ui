@@ -1,0 +1,83 @@
+@media (max-width: 768px) {
+  .content-container {
+    min-height: unset;
+    padding: 20px 16px 30px;
+    border-radius: 2px;
+  }
+
+  .play-content {
+    gap: 15px;
+
+    .sec-title {
+      h2 {
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
+
+    .sec-summary {
+      border-radius: 5px;
+      padding: 12px;
+
+      .text,
+      .number,
+      input {
+        font-size: 12px;
+        // min-width: 165px;
+        line-height: 18px;
+      }
+
+      .number input {}
+
+
+      .text.big,
+      .number.big input {
+        font-size: 12px;
+      }
+
+      .number.big input {
+        font-weight: 700;
+      }
+    }
+
+    .sec-wons {}
+
+    .sec-play-random {
+      gap: 10px;
+
+      .checkbox {
+        img {
+          width: 25px;
+          height: 25px;
+        }
+      }
+
+      .text {
+        font-size: 12px;
+      }
+    }
+
+    .sec-speed {
+      .text {
+        font-size: 12px;
+      }
+    }
+
+    .sec-flow-controls {
+      .buttons {
+        gap: 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        width: 100%;
+        justify-content: space-between;
+
+        .comp-icon {
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

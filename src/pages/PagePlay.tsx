@@ -43,28 +43,20 @@ const SecTitle = () => {
 
 const SecSummary = ({ nrTickets }: { nrTickets: number }) => {
   return <div className='sec-summary'>
-    <table>
-      <tbody>
-        <tr className='big'>
-          <th>Number of tickets:</th>
-          <td><CNumber value={nrTickets} /></td>
-        </tr>
-        <tr>
-          <th>Years spent:</th>
-          <td><CNumber value={Math.trunc(nrTickets / 52)} /></td>
-        </tr>
-        <tr>
-          <th>Cost of tickets:</th>
-          <td>
-            <CNumber
-              value={nrTickets * CONFIG.ticketCost}
-              decimalScale={2}
-              suffix={` ${CONFIG.currency}`}
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <SimpleGrid columns={2}>
+      <span className='text big'>Number of tickets:</span>
+      <span className='number big'><CNumber value={nrTickets} /></span>
+      <span className='text'>Years spent:</span>
+      <span className='number'><CNumber value={Math.trunc(nrTickets / 52)} /></span>
+      <span className='text'>Cost of tickets:</span>
+      <span className='number'>
+        <CNumber
+          value={nrTickets * CONFIG.ticketCost}
+          decimalScale={2}
+          suffix={` ${CONFIG.currency}`}
+        />
+      </span>
+    </SimpleGrid>
   </div>
 }
 
@@ -94,7 +86,7 @@ const SecYourNumbers = ({ numbers }: { numbers: number[] }) => {
 const SecPlayRandom = ({ on, toggle }: { on: boolean, toggle: VoidFunction }) => {
   return <div className='sec-play-random'>
     <div className='text'>Play with random numbers:</div>
-    <div className='choide'>
+    <div className='choice'>
       <div className='checkbox' onClick={toggle}>
         <img src={on ? RandomOn : RandomOff} alt="Random" />
       </div>
@@ -117,6 +109,7 @@ const SecSpeed = ({
     </div>
   </div>
 }
+
 const SecFlowContorls = () => {
   return <div className='sec-flow-controls'>
     <div className='buttons'>
