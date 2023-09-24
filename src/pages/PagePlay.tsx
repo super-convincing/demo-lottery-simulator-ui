@@ -22,7 +22,6 @@ export const PagePlay = () => {
 
   return <div className='content-container'>
     <div className='play-content'>
-      <CRow><div style={{ color: "red" }}>Logic not implemented yet!</div></CRow>
       <CRow><SecTitle /></CRow>
       <CRow><SecSummary nrTickets={121313} /></CRow>
       <CRow><SecWons {...{ won2: 1213, won3: 232, won4: 12, won5: 1 }} /></CRow>
