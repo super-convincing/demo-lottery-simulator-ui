@@ -1,0 +1,101 @@
+.content-container {
+  width: 100%;
+  max-width: 792px;
+  min-height: 400px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: #FFF;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.10);
+  padding: 48px 78px;
+}
+
+.comp-number {
+  background-color: transparent;
+  background: transparent;
+}
+
+.comp-row {
+  display: block;
+  width: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.comp-lottery-number {
+  width: 34px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid $primary-color;
+  background: #FFF;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    opacity: 0.9;
+    color: $text-color;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.comp-slider {}
+
+.comp-icon {
+  span {
+    width: 100%;
+    position: relative;
+    display: block;
+    height: 0px;
+  }
+
+  .icon {
+    opacity: 0.5
+  }
+
+  .icon:hover {
+    opacity: 1
+  }
+}
+
+.comp-lottery-numbers {
+  @include flexRow();
+  gap: 16px;
+
+  .text {
+    @include baseText();
+    min-width: 150px;
+  }
+
+  .numbers {
+    @include flexRow();
+  }
+}
+
+.comp-won {
+  @include flexCol();
+  padding: 10px;
+  border: 1px solid $yellow-border;
+
+  .nr-matches {
+    color: $text-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .nr-won {
+    input {
+      color: $text-color;
+      line-height: normal;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+    }
+  }
+}

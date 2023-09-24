@@ -4,10 +4,12 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  min-width: 360px;
+  user-select: none;
 }
 
 body {
-  color: $font-color;
+  color: $text-color;
   background-color: $background-color;
   min-height: 100vh;
   position: relative;
@@ -21,4 +23,44 @@ body * {
 
 #root {
   display: contents
+}
+
+.app-layout {
+  .layout-header {
+    background: linear-gradient(270deg, #F6F0C6 0%, #D9135D 0.01%, rgba(214, 19, 92, 1.00) 0.02%, #F6F0C6 0.03%, #A6D9C8 80.73%, $primary-color 100%);
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: left;
+
+    img {
+      width: 28px;
+      height: 29px;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: capitalize;
+    }
+  }
+
+  .layout-footer {}
+
+  .layout-content {
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+  }
 }

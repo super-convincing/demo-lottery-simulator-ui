@@ -5,7 +5,6 @@ import { PagePlay } from '../pages/PagePlay';
 export const AppRoutes = () => {
   return <>
     <Routes>
-      {/* <Route path="verify/:code" element={<PageVerify />} /> */}
       <Route path="/" element={<Layout children={<Outlet />} />}>
         <Route path="play" element={<PagePlay />} />
         <Route path="" element={<Navigate to="play" />} />
