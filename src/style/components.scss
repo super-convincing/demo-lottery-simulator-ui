@@ -52,12 +52,12 @@
   }
 
   .icon {
-    opacity: 0.5;
+    opacity: 1;
     cursor: pointer;
   }
 
   .icon:hover {
-    opacity: 1
+    fill: $accent-color;
   }
 }
 

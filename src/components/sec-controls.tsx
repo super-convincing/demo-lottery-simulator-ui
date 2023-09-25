@@ -7,13 +7,13 @@ export const SecContorls = () => {
 
   return <div className='sec-flow-controls'>
     <div className='buttons'>
-      <CIcon text={'Set Numbers'} Icon={MdFilter5} onClick={onClickSetOwnNumbers} />
+      <CIcon text={'Reset'} Icon={MdRefresh} onClick={actReset} />
       {
         isRunning
           ? <CIcon text={'Pause'} Icon={MdOutlinePausePresentation} onClick={actStop} />
           : <CIcon text={'Play'} Icon={MdOutlinePlayCircleOutline} onClick={actStart} />
       }
-      <CIcon text={'Reset'} Icon={MdRefresh} onClick={actReset} />
+      <CIcon text={'Set Numbers'} Icon={MdFilter5} onClick={onClickSetOwnNumbers} />
     </div>
   </div>
 }
