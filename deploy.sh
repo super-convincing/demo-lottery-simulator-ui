@@ -1,10 +1,20 @@
+if [ -z "${AWS_ACCESS_KEY_ID}" ]; then
+  echo "ERR: AWS_ACCESS_KEY_ID is not provided"
+  exit 1
+fi
+
+if [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+  echo "ERR: AWS_SECRET_ACCESS_KEY is not provided"
+  exit 1
+fi
+
 if [ -z "${S3_BUCKET}" ]; then
-  echo "ERR: S3_BUCKET is not provided"
+  echo "ERR: S3_BUCKET (S3 Bucket name) is not provided"
   exit 1
 fi
 
 if [ -z "${CLF_DIST}" ]; then
-  echo "ERR: CLF_DIST is not provided"
+  echo "ERR: CLF_DIST (CloudFront Distribution ID) is not provided"
   exit 1
 fi
 
