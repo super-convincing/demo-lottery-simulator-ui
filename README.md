@@ -1,8 +1,8 @@
 ## Lottó-szimulátor demo project
 
 **Distributions:**  
-[PROD: https://dev.lotto.p66.hu](https://dev.lotto.p66.hu)  
-[DEV: https://lotto.p66.hu](https://lotto.p66.hu)  
+PROD: [lotto.p66.hu](https://lotto.p66.hu) 
+DEV:  [dev.lotto.p66.hu](https://dev.lotto.p66.hu)
 
 **CI/CD:**  
 Gihub Actions:  
