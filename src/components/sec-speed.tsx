@@ -2,19 +2,29 @@ import { CSlider } from '../atoms';
 import { timeoutSelector, actSetTimeoutMS } from '../logic';
 
 export const SecSpeed = () => {
-  const speed = timeoutSelector();
+  const timeoutMs = timeoutSelector();
+  const sliderValue = 1000 - timeoutMs;
+  const sliderMin = 0;
+  const sliderMax = 999;
 
-  const onSpeedChange = (ms: number) => {
+  const onChange = (v: number) => {
+    const ms = 1000 - v;
     actSetTimeoutMS(ms)
   }
 
   return <div className='sec-speed'>
     <div className='text'>
       <span>Speed: </span>
-      <span style={{ opacity: 0.5 }}>({speed}ms)</span>
+      <span style={{ opacity: 0.5 }}>({timeoutMs}ms timeout)</span>
     </div>
     <div className='slider'>
-      <CSlider  {...{ speed, onSpeedChange, min: 1, max: 1000 }} />
+      <CSlider  {...{
+        value: sliderValue,
+        tooltipValue: timeoutMs + "ms",
+        onChange,
+        min: sliderMin,
+        max: sliderMax
+      }} />
     </div>
   </div>
 }

@@ -1,20 +1,32 @@
-import { Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Tooltip } from '@chakra-ui/react';
+import { Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 
+interface CSliderProps {
+  value: number,
+  tooltipValue: string,
+  min: number,
+  max: number,
+  onChange: (newVal: number) => void,
+  onMouseDown?: VoidFunction,
+  onMouseUp?: VoidFunction,
+}
+
 export const CSlider = ({
-  speed, onSpeedChange, onMouseDown, onMouseUp, min, max
-}: {
-  speed: number, min: number, max: number, onSpeedChange: (newVal: number) => void, onMouseDown?: VoidFunction, onMouseUp?: VoidFunction,
-}) => {
+  value,
+  tooltipValue,
+  onChange,
+  onMouseDown,
+  onMouseUp,
+  min,
+  max
+}: CSliderProps) => {
+
   const [showTooltip, setShowTooltip] = useState(false)
-  const p5 = Math.trunc((max - min) / 20)
-  const onChange = (newVal: number) => {
-    onSpeedChange(newVal)
-  }
+
   return <div className='comp-slider'>
     <Slider
       id='slider'
-      value={speed}
+      value={value}
       min={min}
       max={max}
       colorScheme='green'
@@ -25,12 +37,6 @@ export const CSlider = ({
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     >
-      <SliderMark value={min + p5 / 2} mt='1' ml='-2.5' fontSize='sm'>
-        {min}
-      </SliderMark>
-      <SliderMark value={max - p5} mt='1' ml='-2.5' fontSize='sm'>
-        {max}
-      </SliderMark>
       <SliderTrack bgColor={'#E9F5F1'}>
         <SliderFilledTrack bgColor={'#A5D9C8'} />
       </SliderTrack>
@@ -40,7 +46,7 @@ export const CSlider = ({
         color='white'
         placement='top'
         isOpen={showTooltip}
-        label={`${speed}`}
+        label={`${tooltipValue}`}
       >
         <SliderThumb boxSize={3} />
       </Tooltip>
