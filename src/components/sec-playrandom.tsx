@@ -1,9 +1,9 @@
 import RandomOff from '../assets/checkboxOff.svg'
 import RandomOn from '../assets/checkboxOn.svg'
-import { $isRandom, actSetPlayWithRandom } from '../logic'
+import { isRandomSelector, actSetPlayWithRandom } from '../logic'
 
 export const SecPlayRandom = () => {
-  const isRandom = $isRandom()
+  const isRandom = isRandomSelector()
   const toggle = () => {
     actSetPlayWithRandom(!isRandom)
   }
