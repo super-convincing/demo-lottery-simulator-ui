@@ -16,3 +16,4 @@ export const roundMatchedSelector = () => useStore((state) => state.roundMatched
 
 // other elements selectors
 export const isDrawerOpenSelector = () => useStore((state) => state.isDrawerOpen)
+export const refreshSeqSelector = () => useStore((state) => state.refreshSeq)

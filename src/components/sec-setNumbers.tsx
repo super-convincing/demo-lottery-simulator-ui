@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CDrawer, CLotteryNumber } from "../atoms";
-import { getInstanceState, actCloseDrawer, actSetUserNumbers, isDrawerOpenSelector } from "../logic";
+import { getInstanceState, actCloseDrawer, actSetUserNumbers, isDrawerOpenSelector, refreshSeqSelector } from "../logic";
 import { SimpleGrid } from "@chakra-ui/react";
 
 const NUMS_1_90 = new Array(90).fill(0).map((_, i) => i + 1)
 
 export const SecSetOwnNumbers = () => {
+  const refreshSeq = refreshSeqSelector()
   const _userNumbers = getInstanceState().userNumbers;
   const [numbers, _setNumber] = useState<number[]>(_userNumbers)
   const [submitDisabled, setSubmitDisabled] = useState<boolean>(numbers.length != 5)
@@ -20,6 +21,10 @@ export const SecSetOwnNumbers = () => {
     actSetUserNumbers(numbers)
     actCloseDrawer()
   }
+
+  useEffect(() => {
+    _setNumber(getInstanceState().userNumbers)
+  }, [refreshSeq])
 
   return <>
     <CDrawer

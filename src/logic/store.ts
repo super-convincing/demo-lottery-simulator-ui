@@ -3,6 +3,7 @@ import type { LotterySimulatorState } from './simulatorClass';
 
 export interface StoreState extends LotterySimulatorState {
   isDrawerOpen: boolean;
+  refreshSeq: number
 }
 
 export const useStore = create<StoreState>(() => ({
@@ -22,4 +23,5 @@ export const useStore = create<StoreState>(() => ({
 
   // other state elements
   isDrawerOpen: false,
+  refreshSeq: 0,
 }));
