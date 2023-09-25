@@ -33,7 +33,6 @@ export class LotterySimulator {
   private interval: NodeJS.Timeout | null = null;
   private cb: (state: LotterySimulatorState) => void;
 
-
   constructor(cb: (state: LotterySimulatorState) => void) {
     this.cb = cb;
   }
@@ -59,6 +58,7 @@ export class LotterySimulator {
     this.timeout = timeout;
     if (!this.isRunning) {
       this.isRunning = true;
+      this.isJackpot = false;
       this.interval = setInterval(() => this.oneRound(), this.timeout);
     }
   }
@@ -197,30 +197,3 @@ function getRandomNumbers(count: number, min: number, max: number): number[] {
 
   return numbers.sort((a, b) => a - b);
 }
-
-// export function testSimulator() {
-//   console.clear();
-//   const cb = (state: LotterySimulatorState) => {
-//     let text = `-- round: ${state.round}`;
-//     text += ` --- number: ${state.roundNumbers.join(', ')}`;
-//     if (state.roundMatched > 1) text += ` --- matching: ${state.roundMatched}`;
-//     console.log(text);
-//   }
-
-//   const lotterySimulator = new LotterySimulator(cb);
-//   // lotterySimulator.setUserNumbers([5, 10, 15, 20, 25]);
-//   lotterySimulator.setUserNumbers();
-//   lotterySimulator.start(100);
-//   setTimeout(() => {
-//     lotterySimulator.stop();
-//     const state = lotterySimulator.getState();
-//     console.log(`Simulated rounds: ${state.round}`);
-//     console.log(`Matched 2 numbers: ${state.won2} times`);
-//     console.log(`Matched 3 numbers: ${state.won3} times`);
-//     console.log(`Matched 4 numbers: ${state.won4} times`);
-//     console.log(`Matched 5 numbers: ${state.won5} times`);
-//     lotterySimulator.reset();
-//   }, 10000); // Simulate for 10 seconds
-// }
-
-// testSimulator()

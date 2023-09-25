@@ -54,6 +54,11 @@
       font-size: 16px;
     }
 
+    .text.red,
+    .number.red input {
+      color: $red-color;
+    }
+
     .number.big input {
       font-weight: 800;
     }
