@@ -1,5 +1,5 @@
 import { CLotteryNumbers } from '../atoms';
-import { roundNumbersSelector, userNumbersSelector } from '../logic';
+import { roundNumbersSelector, userNumbersSelector, onClickSetOwnNumbers } from '../logic';
 
 export const SecWinningNumbers = () => {
   const numbers = roundNumbersSelector();
@@ -11,6 +11,6 @@ export const SecWinningNumbers = () => {
 export const SecYourNumbers = () => {
   const numbers = userNumbersSelector();
   return <div className='sec-winning-number sec-lottery-numbers'>
-    <CLotteryNumbers text={'Your numbers:'} numbers={numbers} />
+    <CLotteryNumbers text={'Your numbers:'} numbers={numbers} onClickNumbers={onClickSetOwnNumbers} />
   </div>
 }

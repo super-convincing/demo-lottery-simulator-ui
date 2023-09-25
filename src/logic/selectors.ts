@@ -1,5 +1,6 @@
 import { useStore } from "./store";
 
+// simulator elements selectors
 export const isJackpotSelector = () => useStore((state) => state.isJackpot)
 export const isRandomSelector = () => useStore((state) => state.isRandom)
 export const isRunningSelector = () => useStore((state) => state.isRunning)
@@ -12,3 +13,6 @@ export const won3Selector = () => useStore((state) => state.won3)
 export const won4Selector = () => useStore((state) => state.won4)
 export const won5Selector = () => useStore((state) => state.won5)
 export const roundMatchedSelector = () => useStore((state) => state.roundMatched)
+
+// other elements selectors
+export const isDrawerOpenSelector = () => useStore((state) => state.isDrawerOpen)

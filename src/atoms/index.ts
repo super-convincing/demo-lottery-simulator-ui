@@ -1,3 +1,4 @@
+export * from './drawer'
 export * from './fields'
 export * from './icons'
 export * from './layout'

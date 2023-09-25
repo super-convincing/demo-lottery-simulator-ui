@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { CRow } from '../atoms';
-import { SecContorls, SecPlayRandom, SecSpeed, SecSummary, SecTitle, SecWinningNumbers, SecWons, SecYourNumbers } from '../components';
+import { SecContorls, SecPlayRandom, SecSpeed, SecSummary, SecTitle, SecWinningNumbers, SecWons, SecYourNumbers, SecSetOwnNumbers } from '../components';
 import { actUpdateStore } from '../logic';
 
 export const PagePlay = () => {
@@ -19,6 +19,7 @@ export const PagePlay = () => {
       <CRow><SecSpeed /></CRow>
       <CRow><SecContorls /></CRow>
     </div>
+    <SecSetOwnNumbers />
   </div>
 }
 
