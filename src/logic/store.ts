@@ -1,7 +1,12 @@
 import { create } from 'zustand';
 import type { LotterySimulatorState } from './simulatorClass';
 
-export const useStore = create<LotterySimulatorState>(() => ({
+export interface StoreState extends LotterySimulatorState {
+  isDrawerOpen: boolean;
+}
+
+export const useStore = create<StoreState>(() => ({
+  // simulator state elements
   isRunning: false,
   isJackpot: false,
   isRandom: false,
@@ -14,8 +19,7 @@ export const useStore = create<LotterySimulatorState>(() => ({
   won3: 0,
   won4: 0,
   won5: 0,
-}));
 
-export const updateStore = (state: Partial<LotterySimulatorState>) => {
-  useStore.setState(state);
-}
+  // other state elements
+  isDrawerOpen: false,
+}));

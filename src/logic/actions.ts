@@ -1,6 +1,17 @@
 import { getSimulatoreInstance } from "./simulatorInstance"
-import { updateStore, useStore } from "./store"
+import { useStore, StoreState } from "./store"
 
+// ------------------ store actions/requests ------------------
+
+export const setStoreState = (state: Partial<StoreState>) => {
+  useStore.setState(state);
+}
+
+export const getStoreState = () => {
+  return useStore.getState()
+}
+
+// ------------------ instance actions/requests ------------------
 export const actStart = () => {
   getSimulatoreInstance().start()
 }
@@ -26,13 +37,22 @@ export const actSetTimeoutMS = (timeout: number) => {
 }
 
 export const actUpdateStore = () => {
-  updateStore(getSimulatoreInstance().getState())
+  setStoreState(getSimulatoreInstance().getState())
 }
 
 export const getInstanceState = () => {
   return getSimulatoreInstance().getState()
 }
 
-export const getStoreState = () => {
-  return useStore.getState()
+
+// ------------------ set own numbers ------------------
+export const actOpenDrawer = () => {
+  useStore.setState({ isDrawerOpen: true })
+}
+export const actCloseDrawer = () => {
+  useStore.setState({ isDrawerOpen: false })
+}
+export const onClickSetOwnNumbers = () => {
+  actStop()
+  actOpenDrawer()
 }
