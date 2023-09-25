@@ -1,7 +1,8 @@
 import { Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
+import { IconType } from 'react-icons';
 
-export const CIcon = ({ text, Icon, onClick }: { text: string, Icon: any, onClick?: VoidFunction }) => {
+export const CIcon = ({ text, Icon, onClick }: { text: string, Icon: IconType, onClick?: VoidFunction }) => {
   const [showTooltip, setShowTooltip] = useState<boolean>(false)
   const onMouseEnter = () => setShowTooltip(true)
   const onMouseLeave = () => setShowTooltip(false)
