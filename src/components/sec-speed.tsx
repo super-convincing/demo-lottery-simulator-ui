@@ -1,8 +1,8 @@
 import { CSlider } from '../atoms';
-import { $timeout, actSetTimeoutMS } from '../logic';
+import { timeoutSelector, actSetTimeoutMS } from '../logic';
 
 export const SecSpeed = () => {
-  const speed = $timeout();
+  const speed = timeoutSelector();
 
   const onSpeedChange = (ms: number) => {
     actSetTimeoutMS(ms)

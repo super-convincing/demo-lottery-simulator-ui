@@ -1,12 +1,12 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import { CWon } from '../atoms';
-import { $won2, $won3, $won4, $won5 } from '../logic';
+import { won2Selector, won3Selector, won4Selector, won5Selector } from '../logic';
 
 export const SecWons = () => {
-  const won2 = $won2();
-  const won3 = $won3();
-  const won4 = $won4();
-  const won5 = $won5();
+  const won2 = won2Selector();
+  const won3 = won3Selector();
+  const won4 = won4Selector();
+  const won5 = won5Selector();
 
   return <div className='sec-wons'>
     <SimpleGrid columns={[2, null, 4]} spacing={0}>

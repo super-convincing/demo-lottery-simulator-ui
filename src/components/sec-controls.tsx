@@ -1,9 +1,9 @@
 import { MdRefresh, MdOutlinePlayCircleOutline, MdOutlinePausePresentation, MdFilter5 } from 'react-icons/md'
 import { CIcon } from '../atoms';
-import { $isRunning, actReset, actStart, actStop } from '../logic';
+import { isRunningSelector, actReset, actStart, actStop } from '../logic';
 
 export const SecContorls = () => {
-  const isRunning = $isRunning()
+  const isRunning = isRunningSelector()
 
   return <div className='sec-flow-controls'>
     <div className='buttons'>
