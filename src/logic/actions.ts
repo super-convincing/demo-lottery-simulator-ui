@@ -1,5 +1,5 @@
-import { getSimulatoreInstance } from "./instance"
-import { updateStore } from "./store"
+import { getSimulatoreInstance } from "./simulatorInstance"
+import { updateStore, useStore } from "./store"
 
 export const actStart = () => {
   getSimulatoreInstance().start()
@@ -27,4 +27,12 @@ export const actSetTimeoutMS = (timeout: number) => {
 
 export const actUpdateStore = () => {
   updateStore(getSimulatoreInstance().getState())
+}
+
+export const getInstanceState = () => {
+  return getSimulatoreInstance().getState()
+}
+
+export const getStoreState = () => {
+  return useStore.getState()
 }

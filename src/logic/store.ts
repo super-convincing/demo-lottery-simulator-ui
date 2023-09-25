@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { LotterySimulatorState } from '../utils';
+import type { LotterySimulatorState } from './simulatorClass';
 
 export const useStore = create<LotterySimulatorState>(() => ({
   isRunning: false,
