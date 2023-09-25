@@ -47,7 +47,8 @@ export const getInstanceState = () => {
 
 // ------------------ set own numbers ------------------
 export const actOpenDrawer = () => {
-  useStore.setState({ isDrawerOpen: true })
+  const refreshSeq = getStoreState().refreshSeq + 1
+  useStore.setState({ isDrawerOpen: true, refreshSeq })
 }
 export const actCloseDrawer = () => {
   useStore.setState({ isDrawerOpen: false })
