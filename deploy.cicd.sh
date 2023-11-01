@@ -32,8 +32,10 @@ echo "----- CLF_DIST: $CLF_DIST"
 
 # -------- BUILD --------
 rm -rf dist
+yarn build
 if [ ! -d "./dist" ]; then
-  yarn build --mode $ENV
+  echo "----- ERR: Build was not successful -----"
+  exit 1
 fi
 
 cd dist
