@@ -1,15 +1,11 @@
-# -------- SET VARS --------
-if [ "$1" != "dev" ] && [ "$1" != "prod" ]; then
-  echo "----- ERR: \$1 should be either 'dev' or 'prod' -----"
+# -------- CHECK VARS --------
+if [ -z "${AWS_ACCESS_KEY_ID}" ]; then
+  echo "ERR: AWS_ACCESS_KEY_ID is not provided"
   exit 1
 fi
 
-source .env.$1
-
-
-# -------- CHECK VARS --------
-if [ -z "${PROFILE}" ]; then
-  echo "ERR: PROFILE (AWS credentials profile name) is not provided"
+if [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+  echo "ERR: AWS_SECRET_ACCESS_KEY is not provided"
   exit 1
 fi
 

@@ -1,7 +1,7 @@
 name: Deployment
 
 concurrency:
-  group: "lotto-${{ github.ref_name }}"
+  group: "lottery-${{ github.ref_name }}"
   cancel-in-progress: true
 
 on:
@@ -19,6 +19,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ vars.AWS_REGION }}
       S3_BUCKET: ${{ vars.S3_BUCKET }}
+      S3_FOLDER: ${{ vars.S3_FOLDER }}
       CLF_DIST: ${{ vars.CLF_DIST }}
     steps:
       - name: output env variables
@@ -28,6 +29,7 @@ jobs:
           echo AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
           echo AWS_REGION: $AWS_REGION
           echo S3_BUCKET: $S3_BUCKET
+          echo S3_FOLDER: $S3_FOLDER
           echo CLF_DIST: $CLF_DIST
 
       - name: checkout
@@ -40,4 +42,4 @@ jobs:
         run: yarn build          
 
       - name: deploy
-        run: yarn deploy
+        run: yarn deploy:cicd
