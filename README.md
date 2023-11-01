@@ -18,6 +18,6 @@ The interface should show how many tickets have been entered, how many 2, 3, 4 a
 
 In case the user has had 5 tickets, the draw should be stopped and the number of years elapsed should be highlighted (different from the previous status in terms of appearance).
 
-**Design:**  
+**Expected design:**  
 
 ![Design](/docs/Lottery_simulator.png "Design")
