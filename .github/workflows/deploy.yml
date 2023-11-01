@@ -1,4 +1,4 @@
-name: Deployment
+name: WF-Deploy
 
 concurrency:
   group: "lottery-${{ github.ref_name }}"
