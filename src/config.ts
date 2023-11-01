@@ -1,4 +1,4 @@
 export const CONFIG = {
-  ticketCost: 300,
-  currency: 'HUF'
+  ticketCost: 2,
+  currency: '$'
 }
